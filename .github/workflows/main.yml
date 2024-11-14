@@ -24,7 +24,7 @@ jobs:
           java-version: 1.8
 
       - name: Step 3 HAve Github Actions build Maven Project
-        run:  mvn -8 package --file pom.xml
+        run:  mvn -B package --file pom.xml
 
       - name: Step 4 List the current directory
         run: ls-a
