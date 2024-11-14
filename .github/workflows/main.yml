@@ -15,7 +15,7 @@ jobs:
     steps:
       # chesk out your repo under $GITHUB_WORKSPACE, so job can access it
       - name: Step 1 Check out main branch from Github
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
     # Runs a single command using runners shell
       - name: Step 2 Set up JDK 1.8
