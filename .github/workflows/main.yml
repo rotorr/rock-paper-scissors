@@ -51,7 +51,7 @@ jobs:
       - name: Step 4 List the env variables
         run: env
 
-    build-on-macos: 
+  build-on-macos: 
     # type of runner  that job will run on
     runs-on: macos-latest
 
@@ -72,5 +72,3 @@ jobs:
 
       - name: Step 4 List the env variables
         run: env
-
-
