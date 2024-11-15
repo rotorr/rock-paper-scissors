@@ -6,8 +6,8 @@ on:
   push: 
     branches:  [ master ]
 jobs:
-  # this workflow contains single job called build
-  build:  
+  # this workflow contains MULTI jobs called build running diff os systems
+  build-on-ubuntu: 
     # type of runner  that job will run on
     runs-on: ubuntu-latest
 
@@ -26,10 +26,51 @@ jobs:
       - name: Step 3 HAve Github Actions build Maven Project
         run:  mvn -B package --file pom.xml
 
-      - name: Step 4 List the current directory
-        run: ls -a
+      - name: Step 4 List the env variables
+        run: env
 
-      - name:  Step 5 What is the target folder
-        run: |
-          cd target
-          ls -a
+  build-on-windows: 
+    # type of runner  that job will run on
+    runs-on: windows-latest
+
+    #steps represent sequence of task
+    steps:
+      # chesk out your repo under $GITHUB_WORKSPACE, so job can access it
+      - name: Step 1 Check out main branch from Github
+        uses: actions/checkout@v4
+
+    # Runs a single command using runners shell
+      - name: Step 2 Set up JDK 1.8
+        uses:  actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Step 3 HAve Github Actions build Maven Project
+        run:  mvn -B package --file pom.xml
+
+      - name: Step 4 List the env variables
+        run: env
+
+    build-on-macos: 
+    # type of runner  that job will run on
+    runs-on: macos-latest
+
+    #steps represent sequence of task
+    steps:
+      # chesk out your repo under $GITHUB_WORKSPACE, so job can access it
+      - name: Step 1 Check out main branch from Github
+        uses: actions/checkout@v4
+
+    # Runs a single command using runners shell
+      - name: Step 2 Set up JDK 1.8
+        uses:  actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Step 3 HAve Github Actions build Maven Project
+        run:  mvn -B package --file pom.xml
+
+      - name: Step 4 List the env variables
+        run: env
+
+
